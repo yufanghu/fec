@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="shared">
+      <UniqueIdentifier>{f82abd6b-f7ad-4d58-b9e9-47df6e0a4199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared\browser">
+      <UniqueIdentifier>{4b951d52-138d-44ae-b23c-a8e8ffe4245e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared\common">
+      <UniqueIdentifier>{134580f2-fc21-4d85-8106-4c9c165ca329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared\renderer">
+      <UniqueIdentifier>{56faa4eb-3679-4ab3-a64b-aae592f5e3bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared\resources">
+      <UniqueIdentifier>{ed7c736d-65f9-4e55-8789-e052c1eacc76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="browser">
+      <UniqueIdentifier>{e95a0b69-53d3-4300-aedb-57453e66f98d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{6ce6d99f-b650-4d67-9946-ce840b72a653}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="renderer">
+      <UniqueIdentifier>{459b8f8b-0036-4885-91b2-551903af4547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{68f4a393-9353-455f-9656-cff8d76858d3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CefTest.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CefTestDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\browser\client_app_browser.h">
+      <Filter>shared\browser</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\browser\geometry_util.h">
+      <Filter>shared\browser</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\browser\main_message_loop.h">
+      <Filter>shared\browser</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\browser\main_message_loop_external_pump.h">
+      <Filter>shared\browser</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\browser\main_message_loop_std.h">
+      <Filter>shared\browser</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\browser\resource_util.h">
+      <Filter>shared\browser</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\browser\util_win.h">
+      <Filter>shared\browser</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\common\client_app.h">
+      <Filter>shared\common</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\common\client_app_other.h">
+      <Filter>shared\common</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\common\client_switches.h">
+      <Filter>shared\common</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\renderer\client_app_renderer.h">
+      <Filter>shared\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer\client_renderer.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\client_browser.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\client_handler.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CefTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CefTestDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\client_app_browser.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\geometry_util.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\main_message_loop.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\main_message_loop_external_pump.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\main_message_loop_external_pump_win.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\main_message_loop_std.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\resource_util.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\resource_util_win.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\browser\util_win.cc">
+      <Filter>shared\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\common\client_app.cc">
+      <Filter>shared\common</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\common\client_app_other.cc">
+      <Filter>shared\common</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\common\client_switches.cc">
+      <Filter>shared\common</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\renderer\client_app_renderer.cc">
+      <Filter>shared\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\client_app_delegates_browser.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="common\client_app_delegates_common.cc">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer\client_app_delegates_renderer.cc">
+      <Filter>renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer\client_renderer.cc">
+      <Filter>renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\client_browser.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\resource_util_win_idmap.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\client_handler.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CefTest.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\CefTest.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shared\resources\osr_test.html">
+      <Filter>shared\resources</Filter>
+    </None>
+    <None Include="shared\resources\pdf.html">
+      <Filter>shared\resources</Filter>
+    </None>
+    <None Include="shared\resources\pdf.pdf">
+      <Filter>shared\resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\CefTest.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="shared\resources\window_icon.1x.png">
+      <Filter>shared\resources</Filter>
+    </Image>
+    <Image Include="shared\resources\window_icon.2x.png">
+      <Filter>shared\resources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
