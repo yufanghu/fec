@@ -6,6 +6,7 @@
 #include "CefTest.h"
 #include "CefTestDlg.h"
 #include "afxdialogex.h"
+#include "CefApi.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -13,7 +14,7 @@
 
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
-
+CCefApi * pCef = NULL;
 class CAboutDlg : public CDialogEx
 {
 public:
@@ -97,7 +98,8 @@ BOOL CCefTestDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO:  在此添加额外的初始化代码
-
+	pCef = new CCefApi();
+	pCef->WebInit(GetSafeHwnd());
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 

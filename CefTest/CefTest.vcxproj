@@ -43,9 +43,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\Output\Debug\bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\Output\Release\bin</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -105,6 +107,7 @@
   <ItemGroup>
     <ClInclude Include="browser\client_browser.h" />
     <ClInclude Include="browser\client_handler.h" />
+    <ClInclude Include="CefApi.h" />
     <ClInclude Include="CefTest.h" />
     <ClInclude Include="CefTestDlg.h" />
     <ClInclude Include="renderer\client_renderer.h" />
@@ -128,6 +131,7 @@
     <ClCompile Include="browser\client_browser.cc" />
     <ClCompile Include="browser\client_handler.cc" />
     <ClCompile Include="browser\resource_util_win_idmap.cc" />
+    <ClCompile Include="CefApi.cpp" />
     <ClCompile Include="CefTest.cpp" />
     <ClCompile Include="CefTestDlg.cpp" />
     <ClCompile Include="common\client_app_delegates_common.cc" />

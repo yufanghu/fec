@@ -40,6 +40,9 @@
     <Filter Include="resources">
       <UniqueIdentifier>{68f4a393-9353-455f-9656-cff8d76858d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="myapi">
+      <UniqueIdentifier>{23a5144e-2391-42d2-8a80-005412590c69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="browser\client_handler.h">
       <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="CefApi.h">
+      <Filter>myapi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="browser\client_handler.cc">
       <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="CefApi.cpp">
+      <Filter>myapi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
