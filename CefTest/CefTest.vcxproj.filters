@@ -108,6 +108,33 @@
     <ClInclude Include="CefApi.h">
       <Filter>myapi</Filter>
     </ClInclude>
+    <ClInclude Include="browser\browser_window.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\browser_window_osr_win.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\browser_window_std_win.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\client_handler_osr.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\client_handler_std.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\osr_window_win.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\osr_renderer.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\osr_ime_handler_win.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\main_context.h">
+      <Filter>browser</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CefTest.cpp">
@@ -181,6 +208,33 @@
     </ClCompile>
     <ClCompile Include="CefApi.cpp">
       <Filter>myapi</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\browser_window.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\browser_window_osr_win.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\browser_window_std_win.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\client_handler_osr.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\client_handler_std.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\osr_window_win.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\osr_renderer.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\osr_ime_handler_win.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\main_context.cc">
+      <Filter>browser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

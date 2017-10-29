@@ -9,21 +9,24 @@
 #include "shared/browser/client_app_browser.h"
 #include "shared/renderer/client_app_renderer.h"
 #include "shared/common/client_app_other.h"
+#include "browser\browser_window_osr_win.h"
 
 //#pragma comment(lib, "libcef")
 #pragma comment(lib, "Dbghelp")
 #pragma comment(lib, "Psapi")	
-#pragma comment(lib, "Winmm")	
-
+#pragma comment(lib, "Winmm")
+#pragma comment(lib, "opengl32")
+#pragma comment(lib, "Imm32")
 
 using namespace client;
-class CCefApi
+class CCefApi : public BrowserWindow::Delegate
 {
 public:
 	CCefApi();
 	~CCefApi();
 	void WebInit(HWND hWnd){
 
+		m_hWnd = hWnd;
 		HINSTANCE hInstance = GetModuleHandle(NULL);
 		CefSettings m_cefSetting;
 
@@ -72,6 +75,23 @@ public:
 		delete[] path;
 		path = NULL;
 	}
+
+	void Run(){
+		CefWindowInfo window_info;
+		RECT rect;
+		::GetWindowRect(m_hWnd, &rect);
+		window_info.SetAsChild(m_hWnd, rect);
+		//window_info.SetAsPopup(m_hWnd, "aaa");
+		//window_info.SetAsWindowless(m_hWnd, false);
+		CefBrowserSettings browser_settings;
+		OsrRenderer::Settings settings = {};
+		//MainContext::Get()->PopulateOsrSettings(&settings);
+		BrowserWindowOsrWin * bw = new BrowserWindowOsrWin(this, "www.baiddu.com", settings);
+		//BrowserWindowOsrWin * bw = new client::BrowserWindowOsrWin()
+		bw->CreateBrowser(m_hWnd, CefRect(), browser_settings,
+			NULL);
+		//CefBrowserHost::CreateBrowser(window_info, m_handler, "www.baiddu.com", browser_settings, NULL);
+	}
 private:
 	void GetCefChildPath(wchar_t ** path){
 		wchar_t* p = *path;
@@ -84,5 +104,18 @@ private:
 		
 	}
 	bool m_bEnableSandBox;
+	HWND m_hWnd;
+
+	// BrowserWindow::Delegate methods.
+	void OnBrowserCreated(CefRefPtr<CefBrowser> browser) OVERRIDE;
+	void OnBrowserWindowDestroyed() OVERRIDE;
+	void OnSetAddress(const std::string& url) OVERRIDE;
+	void OnSetTitle(const std::string& title) OVERRIDE;
+	void OnSetFullscreen(bool fullscreen) OVERRIDE;
+	void OnSetLoadingState(bool isLoading,
+		bool canGoBack,
+		bool canGoForward) OVERRIDE;
+	void OnSetDraggableRegions(
+		const std::vector<CefDraggableRegion>& regions) OVERRIDE;
 };
 
