@@ -5,11 +5,13 @@
 #include "include/wrapper/cef_helpers.h"
 //#include "include/cef_sandbox_win.h"
 #include "include/cef_app.h"
+#include "browser\client_handler.h"
 #include "shared/common/client_app.h"
 #include "shared/browser/client_app_browser.h"
 #include "shared/renderer/client_app_renderer.h"
 #include "shared/common/client_app_other.h"
 #include "browser\browser_window_osr_win.h"
+#include "browser\client_handler_std.h"
 
 //#pragma comment(lib, "libcef")
 #pragma comment(lib, "Dbghelp")
@@ -24,9 +26,9 @@ class CCefApi : public BrowserWindow::Delegate
 public:
 	CCefApi();
 	~CCefApi();
-	void WebInit(HWND hWnd){
+	void WebInit(){
 
-		m_hWnd = hWnd;
+		//m_hWnd = hWnd;
 		HINSTANCE hInstance = GetModuleHandle(NULL);
 		CefSettings m_cefSetting;
 
@@ -46,8 +48,8 @@ public:
 		m_cefSetting.multi_threaded_message_loop = true;		//使用主程序消息循环
 		m_cefSetting.single_process = false;					//使用多进程模式
 		m_cefSetting.ignore_certificate_errors = true;		//忽略掉ssl证书验证错误
-		m_cefSetting.command_line_args_disabled = true;
-
+		//m_cefSetting.command_line_args_disabled = true;
+		m_cefSetting.no_sandbox = true;
 		CefString(&m_cefSetting.locale).FromASCII("zh-CN");
 
 		wchar_t * path = new wchar_t[MAX_PATH];
@@ -75,7 +77,7 @@ public:
 		delete[] path;
 		path = NULL;
 	}
-
+	void SetHwnd(HWND hWnd){ m_hWnd = hWnd; }
 	void Run(){
 		CefWindowInfo window_info;
 		RECT rect;
@@ -84,13 +86,15 @@ public:
 		//window_info.SetAsPopup(m_hWnd, "aaa");
 		//window_info.SetAsWindowless(m_hWnd, false);
 		CefBrowserSettings browser_settings;
-		OsrRenderer::Settings settings = {};
-		//MainContext::Get()->PopulateOsrSettings(&settings);
-		BrowserWindowOsrWin * bw = new BrowserWindowOsrWin(this, "www.baiddu.com", settings);
-		//BrowserWindowOsrWin * bw = new client::BrowserWindowOsrWin()
-		bw->CreateBrowser(m_hWnd, CefRect(), browser_settings,
-			NULL);
-		//CefBrowserHost::CreateBrowser(window_info, m_handler, "www.baiddu.com", browser_settings, NULL);
+		//OsrRenderer::Settings settings = {};
+		////MainContext::Get()->PopulateOsrSettings(&settings);
+		//BrowserWindowOsrWin * bw = new BrowserWindowOsrWin(this, "www.baiddu.com", settings);
+		////BrowserWindowOsrWin * bw = new client::BrowserWindowOsrWin()
+		//bw->CreateBrowser(m_hWnd, CefRect(), browser_settings,
+		//	NULL);
+		
+		CefRefPtr<CefClient> client(new client::ClientHandler(NULL, true, "www.baidu.com"));
+		CefBrowserHost::CreateBrowser(window_info, client, "www.baiddu.com", browser_settings, NULL);
 	}
 private:
 	void GetCefChildPath(wchar_t ** path){

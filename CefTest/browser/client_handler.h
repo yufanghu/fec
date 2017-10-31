@@ -36,7 +36,10 @@ class ClientHandler : public CefClient,
                       public CefLifeSpanHandler,
                       public CefLoadHandler,
                       public CefRequestHandler {
+
  public:
+
+	
   // Implement this interface to receive notification of ClientHandler
   // events. The methods of this class will be called on the main thread unless
   // otherwise indicated.
@@ -375,7 +378,9 @@ class ClientHandler : public CefClient,
 
   // Set of Handlers registered with the message router.
   MessageHandlerSet message_handler_set_;
-
+ // bool HasOneRef() const OVERRIDE{ return ref_count_.HasOneRef(); }
+ 
+  IMPLEMENT_REFCOUNTING(ClientHandler);
   DISALLOW_COPY_AND_ASSIGN(ClientHandler);
 };
 

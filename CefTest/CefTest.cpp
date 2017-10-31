@@ -37,9 +37,9 @@ CCefTestApp::CCefTestApp()
 
 CCefTestApp theApp;
 
-
+#include "CefApi.h"
 // CCefTestApp 初始化
-
+CCefApi * pCef = new CCefApi();
 BOOL CCefTestApp::InitInstance()
 {
 	// 如果一个运行在 Windows XP 上的应用程序清单指定要
@@ -53,7 +53,8 @@ BOOL CCefTestApp::InitInstance()
 	InitCommonControlsEx(&InitCtrls);
 
 	CWinApp::InitInstance();
-
+	
+	pCef->WebInit();
 
 	AfxEnableControlContainer();
 

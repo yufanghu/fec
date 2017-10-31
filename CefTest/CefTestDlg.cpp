@@ -14,7 +14,7 @@
 
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
-CCefApi * pCef = NULL;
+//CCefApi * pCef = NULL;
 class CAboutDlg : public CDialogEx
 {
 public:
@@ -34,7 +34,7 @@ protected:
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
 {
 }
-
+extern CCefApi * pCef;
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
@@ -98,8 +98,9 @@ BOOL CCefTestDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO:  在此添加额外的初始化代码
-	pCef = new CCefApi();
-	pCef->WebInit(GetSafeHwnd());
+	
+	pCef->SetHwnd(GetSafeHwnd());
+	pCef->Run();
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 

@@ -2,7 +2,7 @@
 // reserved. Use of this source code is governed by a BSD-style license that
 // can be found in the LICENSE file.
 
-#include "cefclient/browser/client_handler.h"
+#include "client_handler.h"
 
 #include <stdio.h>
 #include <algorithm>
@@ -249,14 +249,14 @@ ClientHandler::ClientHandler(Delegate* delegate,
       console_log_file_(),
       first_console_message_(true),
       focus_on_editable_field_(false) {
-  DCHECK(!console_log_file_.empty());
+ // DCHECK(!console_log_file_.empty());
 
 #if defined(OS_LINUX)
   // Provide the GTK-based dialog implementation on Linux.
   dialog_handler_ = new ClientDialogHandlerGtk();
 #endif
 
-  resource_manager_ = new CefResourceManager();
+ // resource_manager_ = new CefResourceManager();
   //test_runner::SetupResourceManager(resource_manager_);
 
   // Read command line settings.
@@ -371,7 +371,7 @@ void ClientHandler::OnTitleChange(CefRefPtr<CefBrowser> browser,
                                   const CefString& title) {
   CEF_REQUIRE_UI_THREAD();
 
-  NotifyTitle(title);
+  //NotifyTitle(title);
 }
 
 void ClientHandler::OnFaviconURLChange(
@@ -543,7 +543,7 @@ void ClientHandler::OnAfterCreated(CefRefPtr<CefBrowser> browser) {
   if (mouse_cursor_change_disabled_)
     browser->GetHost()->SetMouseCursorChangeDisabled(true);
 
-  NotifyBrowserCreated(browser);
+ // NotifyBrowserCreated(browser);
 }
 
 bool ClientHandler::DoClose(CefRefPtr<CefBrowser> browser) {
@@ -579,7 +579,7 @@ void ClientHandler::OnLoadingStateChange(CefRefPtr<CefBrowser> browser,
                                          bool canGoForward) {
   CEF_REQUIRE_UI_THREAD();
 
-  NotifyLoadingState(isLoading, canGoBack, canGoForward);
+  //NotifyLoadingState(isLoading, canGoBack, canGoForward);
 }
 
 void ClientHandler::OnLoadError(CefRefPtr<CefBrowser> browser,
@@ -641,8 +641,9 @@ cef_return_value_t ClientHandler::OnBeforeResourceLoad(
     CefRefPtr<CefRequestCallback> callback) {
   CEF_REQUIRE_IO_THREAD();
 
-  return resource_manager_->OnBeforeResourceLoad(browser, frame, request,
-                                                 callback);
+ // return resource_manager_->OnBeforeResourceLoad(browser, frame, request,
+ //                                                callback);
+  return cef_return_value_t(0);
 }
 
 CefRefPtr<CefResourceHandler> ClientHandler::GetResourceHandler(

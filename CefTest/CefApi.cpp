@@ -13,7 +13,9 @@ CCefApi::~CCefApi()
 
 
 void CCefApi::OnBrowserCreated(CefRefPtr<CefBrowser> browser)
-{}
+{
+
+}
 
 void CCefApi::OnBrowserWindowDestroyed()
 {}
