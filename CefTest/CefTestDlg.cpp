@@ -67,7 +67,7 @@ END_MESSAGE_MAP()
 
 
 // CCefTestDlg 消息处理程序
-
+#include "CefClientBrowser.h"
 BOOL CCefTestDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -97,71 +97,20 @@ BOOL CCefTestDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
+	CefClientBrowser* p = new CefClientBrowser();
+	RECT rect;  GetClientRect(&rect);
+	p->CreateEx(WS_EX_CLIENTEDGE, NULL, NULL, WS_CHILD | WS_VISIBLE, rect, this, 1230);
+	p->ShowWindow(SW_SHOW);
+	p->Go("www.baidu.com");
 	// TODO:  在此添加额外的初始化代码
-	CCefApi * pCef = (new CCefApi());
+	/*CCefApi * pCef = (new CCefApi());
 	pCef->WebInit();
 	pCef->SetHwnd(GetSafeHwnd());
-	pCef->Run();
+	pCef->Run();*/
+
+	
 	return TRUE;
-	auto rect = RECT{ 0 };
-
-	HINSTANCE hInstance = GetModuleHandle(NULL);
-	CefSettings m_cefSetting;
-
-	//初始化cefsetting
-	CefSettingsTraits::init(&m_cefSetting);
-	void* sandbox_info = NULL;
-
-	/*if (m_bEnableSandBox){
-	CefScopedSandboxInfo scoped_sandbox;
-	sandbox_info = scoped_sandbox.sandbox_info();
-	m_cefSetting.no_sandbox = false;
-	}
-	else{
-	m_cefSetting.no_sandbox = true;
-	}*/
-
-	m_cefSetting.multi_threaded_message_loop = true;		//使用主程序消息循环
-	m_cefSetting.single_process = true;					//使用多进程模式
-	m_cefSetting.ignore_certificate_errors = true;		//忽略掉ssl证书验证错误
-	//m_cefSetting.command_line_args_disabled = true;
-	m_cefSetting.no_sandbox = true;
-	CefString(&m_cefSetting.locale).FromASCII("zh-CN");
-
-	wchar_t * path = new wchar_t[MAX_PATH];
-	memset(path, 0, MAX_PATH * sizeof(wchar_t));
-	//GetCefChildPath(&path);
-	//cef_string_from_wide(path, MAX_PATH, &m_cefSetting.browser_subprocess_path);
-
-	//::MessageBoxA(NULL, ("aaa"), NULL, MB_OK);
-	CefRefPtr<CefCommandLine> command_line = CefCommandLine::CreateCommandLine();
-	command_line->InitFromString(::GetCommandLineW());
-
-	// Create a ClientApp of the correct type.
-	CefRefPtr<CefApp> app;
-	client::ClientApp::ProcessType process_type = client::ClientApp::GetProcessType(command_line);
-	if (process_type == client::ClientApp::BrowserProcess)
-		app = new ClientAppBrowser();
-	else if (process_type == ClientApp::RendererProcess)
-		app = new ClientAppRenderer();
-	else if (process_type == ClientApp::OtherProcess)
-		app = new ClientAppOther();
-	m_cefSetting.multi_threaded_message_loop = true;		//使用主程序消息循环
-	m_cefSetting.single_process = false;					//使用多进程模式
-	m_cefSetting.ignore_certificate_errors = true;		//忽略掉ssl证书验证错误
-	//m_cefSetting.command_line_args_disabled = true;
-	m_cefSetting.no_sandbox = true;
-	CefMainArgs main_args(hInstance);
-	CefInitialize(main_args, m_cefSetting, app, sandbox_info);
-
-
-	GetClientRect(&rect);
-
-	CefWindowInfo info;
-	info.SetAsChild(GetSafeHwnd(), rect);
-
-	CefBrowserSettings browserSettings;
-	browserSettings.web_security = STATE_DISABLED;
+	
 
 	/*m_clientHandler = new guo::ClientHandler(this);
 	m_clientHandler->CreateBrowser(info, browserSettings, CefString("www.baidu.com"));*/

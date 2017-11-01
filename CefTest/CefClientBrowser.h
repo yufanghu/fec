@@ -1,12 +1,16 @@
 #pragma once
 #include "CefClientHandler.h"
+#include <string>
 
-class CefClientBrowser : public CefClientHandler::Delegate
+class CefClientBrowser : public CWnd, public  CefClientHandler::Delegate
 {
 public:
 	CefClientBrowser();
 	virtual ~CefClientBrowser();
 	void SetMainHwnd(HWND hWnd);
+public:
+	void WebInit();
+	void Go(const std::string & url);
 protected:
 	void OnBrowserCreated(CefRefPtr<CefBrowser> browser);
 	//
@@ -26,6 +30,11 @@ private:
 	CefRefPtr<CefBrowser> m_browser;
 	CefClientHandler* m_clientHandler;
 	HWND m_hWnd;
+public:
+	DECLARE_MESSAGE_MAP()
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnDestroy();
+	afx_msg void OnClose();
 };
 
 //void OnBrowserCreated(CefRefPtr<CefBrowser> browser);

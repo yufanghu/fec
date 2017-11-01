@@ -118,7 +118,7 @@
     <ClInclude Include="browser\osr_renderer.h" />
     <ClInclude Include="browser\osr_window_win.h" />
     <ClInclude Include="CefApi.h" />
-    <ClInclude Include="CefBrowser.h" />
+    <ClInclude Include="CefClientBrowser.h" />
     <ClInclude Include="CefTest.h" />
     <ClInclude Include="CefTestDlg.h" />
     <ClInclude Include="CefClientHandler.h" />
@@ -154,7 +154,7 @@
     <ClCompile Include="browser\osr_window_win.cc" />
     <ClCompile Include="browser\resource_util_win_idmap.cc" />
     <ClCompile Include="CefApi.cpp" />
-    <ClCompile Include="CefBrowser.cpp" />
+    <ClCompile Include="CefClientBrowser.cpp" />
     <ClCompile Include="CefTest.cpp" />
     <ClCompile Include="CefTestDlg.cpp" />
     <ClCompile Include="common\client_app_delegates_common.cc" />
@@ -196,4 +196,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="CefTest.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

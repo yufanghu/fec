@@ -141,8 +141,8 @@
     <ClInclude Include="CefClientHandler.h">
       <Filter>myapi</Filter>
     </ClInclude>
-    <ClInclude Include="CefBrowser.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="CefClientBrowser.h">
+      <Filter>myapi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -251,8 +251,8 @@
     <ClCompile Include="CefClientHandler.cpp">
       <Filter>myapi</Filter>
     </ClCompile>
-    <ClCompile Include="CefBrowser.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="CefClientBrowser.cpp">
+      <Filter>myapi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
