@@ -42,7 +42,17 @@ void CefClientBrowser::OnSetTitle(std::string const & title)
 
 void CefClientBrowser::OnSetFullscreen(bool const fullscreen)
 {
-
+	if (m_browser != nullptr)
+	{
+		if (fullscreen)
+		{
+			CefWindowsHelpers::Maximize(m_browser);
+		}
+		else
+		{
+			CefWindowsHelpers::Restore(m_browser);
+		}
+	}
 }
 
 void CefClientBrowser::OnSetLoadingState(bool const isLoading, bool const canGoBack, bool const canGoForward)
