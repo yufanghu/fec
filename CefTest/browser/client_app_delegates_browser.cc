@@ -4,10 +4,10 @@
 
 #include "shared/browser/client_app_browser.h"
 
-#include "cefclient/browser/client_browser.h"
+#include "browser/client_browser.h"
 
 #if defined(OS_LINUX)
-#include "cefclient/browser/print_handler_gtk.h"
+#include "browser/print_handler_gtk.h"
 #endif
 
 namespace client {

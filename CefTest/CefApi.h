@@ -12,7 +12,7 @@
 #include "shared/common/client_app_other.h"
 #include "browser\browser_window_osr_win.h"
 #include "browser\client_handler_std.h"
-
+#include "browser\main_message_loop_multithreaded_win.h"
 //#pragma comment(lib, "libcef")
 #pragma comment(lib, "Dbghelp")
 #pragma comment(lib, "Psapi")	
@@ -46,7 +46,7 @@ public:
 			}*/
 
 		m_cefSetting.multi_threaded_message_loop = true;		//使用主程序消息循环
-		m_cefSetting.single_process = false;					//使用多进程模式
+		m_cefSetting.single_process = true;					//使用多进程模式
 		m_cefSetting.ignore_certificate_errors = true;		//忽略掉ssl证书验证错误
 		//m_cefSetting.command_line_args_disabled = true;
 		m_cefSetting.no_sandbox = true;
@@ -93,8 +93,14 @@ public:
 		//bw->CreateBrowser(m_hWnd, CefRect(), browser_settings,
 		//	NULL);
 		
-		CefRefPtr<CefClient> client(new client::ClientHandler(NULL, true, "www.baidu.com"));
-		CefBrowserHost::CreateBrowser(window_info, client, "www.baiddu.com", browser_settings, NULL);
+		//CefRefPtr<CefClient> client(new client::ClientHandler(NULL, false, "https://www.baidu.com"));
+		CefClient * pClient = new client::ClientHandler(NULL, false, "https://www.baidu.com");
+		CefBrowserHost::CreateBrowser(window_info, pClient, "https://www.baidu.com", browser_settings, NULL);
+
+		//MainMessageLoop * pmsg = new MainMessageLoopMultithreadedWin();
+		//if (settings.multi_threaded_message_loop)
+		//pmsg->reset(new MainMessageLoopMultithreadedWin);
+		//message_loop->Run();
 	}
 private:
 	void GetCefChildPath(wchar_t ** path){

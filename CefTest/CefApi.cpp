@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "CefApi.h"
-
+//#include "MyClientHandler.h"
 
 CCefApi::CCefApi()
 {
+	//g//uo::ClientHandler * a = new guo::ClientHandler(NULL);
 }
 
 

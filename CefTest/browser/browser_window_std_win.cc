@@ -2,9 +2,9 @@
 // reserved. Use of this source code is governed by a BSD-style license that
 // can be found in the LICENSE file.
 
-#include "cefclient/browser/browser_window_std_win.h"
+#include "browser/browser_window_std_win.h"
 
-#include "cefclient/browser/client_handler_std.h"
+#include "browser/client_handler_std.h"
 #include "shared/browser/main_message_loop.h"
 
 namespace client {

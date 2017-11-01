@@ -17,8 +17,8 @@
 #include "include/cef_ssl_status.h"
 #include "include/cef_x509_certificate.h"
 #include "include/wrapper/cef_closure_task.h"
-#include "cefclient/browser/main_context.h"
-#include "cefclient/browser/root_window_manager.h"
+#include "browser/main_context.h"
+#include "browser/root_window_manager.h"
 //#include "cefclient/browser/test_runner.h"
 #include "shared/browser/resource_util.h"
 #include "shared/common/client_switches.h"
@@ -543,7 +543,7 @@ void ClientHandler::OnAfterCreated(CefRefPtr<CefBrowser> browser) {
   if (mouse_cursor_change_disabled_)
     browser->GetHost()->SetMouseCursorChangeDisabled(true);
 
- // NotifyBrowserCreated(browser);
+  //NotifyBrowserCreated(browser);
 }
 
 bool ClientHandler::DoClose(CefRefPtr<CefBrowser> browser) {

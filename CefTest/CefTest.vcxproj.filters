@@ -135,6 +135,15 @@
     <ClInclude Include="browser\main_context.h">
       <Filter>browser</Filter>
     </ClInclude>
+    <ClInclude Include="browser\main_message_loop_multithreaded_win.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="CefClientHandler.h">
+      <Filter>myapi</Filter>
+    </ClInclude>
+    <ClInclude Include="CefBrowser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CefTest.cpp">
@@ -235,6 +244,15 @@
     </ClCompile>
     <ClCompile Include="browser\main_context.cc">
       <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\main_message_loop_multithreaded_win.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="CefClientHandler.cpp">
+      <Filter>myapi</Filter>
+    </ClCompile>
+    <ClCompile Include="CefBrowser.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

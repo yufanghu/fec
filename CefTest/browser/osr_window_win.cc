@@ -2,7 +2,7 @@
 // reserved. Use of this source code is governed by a BSD-style license that
 // can be found in the LICENSE file.
 
-#include "cefclient/browser/osr_window_win.h"
+#include "browser/osr_window_win.h"
 
 #include <windowsx.h>
 #if defined(CEF_USE_ATL)
@@ -10,11 +10,11 @@
 #endif
 
 #include "include/base/cef_build.h"
-#include "cefclient/browser/main_context.h"
-#include "cefclient/browser/osr_accessibility_helper.h"
-#include "cefclient/browser/osr_accessibility_node.h"
-#include "cefclient/browser/osr_ime_handler_win.h"
-#include "cefclient/browser/resource.h"
+#include "browser/main_context.h"
+#include "browser/osr_accessibility_helper.h"
+#include "browser/osr_accessibility_node.h"
+#include "browser/osr_ime_handler_win.h"
+#include "browser/resource.h"
 #include "shared/browser/geometry_util.h"
 #include "shared/browser/main_message_loop.h"
 #include "shared/browser/util_win.h"

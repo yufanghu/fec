@@ -8,8 +8,8 @@
 #include <windowsx.h>
 
 #include "include/base/cef_build.h"
-#include "cefclient/browser/osr_ime_handler_win.h"
-#include "cefclient/browser/resource.h"
+#include "browser/osr_ime_handler_win.h"
+#include "browser/resource.h"
 #include "shared/browser/geometry_util.h"
 #include "shared/browser/main_message_loop.h"
 #include "shared/browser/util_win.h"
