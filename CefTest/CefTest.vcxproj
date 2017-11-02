@@ -123,6 +123,7 @@
     <ClInclude Include="CefTest.h" />
     <ClInclude Include="CefTestDlg.h" />
     <ClInclude Include="CefClientHandler.h" />
+    <ClInclude Include="MyDialog.h" />
     <ClInclude Include="renderer\client_renderer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="shared\browser\client_app_browser.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="CefTestDlg.cpp" />
     <ClCompile Include="common\client_app_delegates_common.cc" />
     <ClCompile Include="CefClientHandler.cpp" />
+    <ClCompile Include="MyDialog.cpp" />
     <ClCompile Include="renderer\client_app_delegates_renderer.cc" />
     <ClCompile Include="renderer\client_renderer.cc" />
     <ClCompile Include="shared\browser\client_app_browser.cc" />

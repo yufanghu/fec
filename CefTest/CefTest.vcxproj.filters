@@ -147,6 +147,9 @@
     <ClInclude Include="CefBaseWnd.h">
       <Filter>myapi</Filter>
     </ClInclude>
+    <ClInclude Include="MyDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CefTest.cpp">
@@ -259,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="CefBaseWnd.cpp">
       <Filter>myapi</Filter>
+    </ClCompile>
+    <ClCompile Include="MyDialog.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

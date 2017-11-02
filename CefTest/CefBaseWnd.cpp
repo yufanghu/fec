@@ -43,7 +43,7 @@ int CefBaseWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	//CefBaseWnd* p = new CefBaseWnd();
 	//RECT rect;  GetClientRect(&rect);
 	m_pBrowser->CreateEx(WS_EX_CLIENTEDGE, NULL, NULL, WS_CHILD | WS_VISIBLE, CRect(0, 0, 0, 0), this, 1230);
-	m_pBrowser->ShowWindow(SW_SHOW);
+	m_pBrowser->ShowWindow(SW_HIDE);
 	m_pBrowser->Go("www.baidu.com");
 	return 0;
 }

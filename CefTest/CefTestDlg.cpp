@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 #include "CefApi.h"
 #include "CefBaseWnd.h"
+#include "MyDialog.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -172,9 +173,11 @@ HCURSOR CCefTestDlg::OnQueryDragIcon()
 void CCefTestDlg::OnBnClickedOk()
 {
 	// TODO:  在此添加控件通知处理程序代码
-	CefBaseWnd* p = new CefBaseWnd(IDD_DIALOG1);
+	//CefBaseWnd* p = new CefBaseWnd(IDD_DIALOG1);
 
-	p->DoModal();
+	//p->DoModal();
 	
+	CMyDialog dlg;
+	dlg.DoModal();
 	//CDialogEx::OnOK();
 }

@@ -162,8 +162,8 @@ void CefClientBrowser::Go(const std::string & url)
 {
 	CefWindowInfo window_info;
 	RECT rect;
-	::GetClientRect(this->GetSafeHwnd(), &rect);
-	window_info.SetAsChild(this->GetSafeHwnd(), rect);
+	::GetClientRect(GetParent()->GetSafeHwnd(), &rect);
+	window_info.SetAsChild(GetParent()->GetSafeHwnd(), rect);
 	//window_info.SetAsPopup(m_hWnd, "aaa");
 	//window_info.SetAsWindowless(m_hWnd, false);
 	CefBrowserSettings browser_settings;
