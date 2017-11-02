@@ -105,3 +105,10 @@ CefClientHandler::~CefClientHandler()
 {
 
 }
+
+bool CefClientHandler::OnBeforePopup(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, const CefString& target_url, const CefString& target_frame_name, CefLifeSpanHandler::WindowOpenDisposition target_disposition, bool user_gesture, const CefPopupFeatures& popupFeatures, CefWindowInfo& windowInfo, CefRefPtr<CefClient>& client, CefBrowserSettings& settings, bool* no_javascript_access)
+{
+	CEF_REQUIRE_UI_THREAD();
+	//ShowDevTools(browser, CefPoint(params->GetXCoord(), params->GetYCoord()));
+	return TRUE;
+}

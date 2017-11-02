@@ -118,6 +118,7 @@
     <ClInclude Include="browser\osr_renderer.h" />
     <ClInclude Include="browser\osr_window_win.h" />
     <ClInclude Include="CefApi.h" />
+    <ClInclude Include="CefBaseWnd.h" />
     <ClInclude Include="CefClientBrowser.h" />
     <ClInclude Include="CefTest.h" />
     <ClInclude Include="CefTestDlg.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="browser\osr_window_win.cc" />
     <ClCompile Include="browser\resource_util_win_idmap.cc" />
     <ClCompile Include="CefApi.cpp" />
+    <ClCompile Include="CefBaseWnd.cpp" />
     <ClCompile Include="CefClientBrowser.cpp" />
     <ClCompile Include="CefTest.cpp" />
     <ClCompile Include="CefTestDlg.cpp" />

@@ -77,6 +77,7 @@ BEGIN_MESSAGE_MAP(CefClientBrowser, CWnd)
 	ON_WM_CREATE()
 	ON_WM_DESTROY()
 	ON_WM_CLOSE()
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 
@@ -166,6 +167,24 @@ void CefClientBrowser::Go(const std::string & url)
 	//window_info.SetAsPopup(m_hWnd, "aaa");
 	//window_info.SetAsWindowless(m_hWnd, false);
 	CefBrowserSettings browser_settings;
-	CefClientHandler * pClient = new CefClientHandler(this);
-	CefBrowserHost::CreateBrowser(window_info, pClient, "http://www.gamersky.com/", browser_settings, NULL);
+	m_clientHandler = new CefClientHandler(this);
+	CefBrowserHost::CreateBrowser(window_info, m_clientHandler, "http://www.baidu.com/", browser_settings, NULL);
+}
+
+
+void CefClientBrowser::OnSize(UINT nType, int cx, int cy)
+{
+	__super::OnSize(nType, cx, cy);
+	if (m_clientHandler != nullptr)
+	{
+		if (m_browser != nullptr)
+		{
+			auto hwnd = m_browser->GetHost()->GetWindowHandle();
+			auto rect = RECT{ 0 };
+			GetClientRect(&rect);
+
+			::SetWindowPos(hwnd, HWND_TOP, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, SWP_NOZORDER);
+		}
+	}
+	// TODO:  在此处添加消息处理程序代码
 }

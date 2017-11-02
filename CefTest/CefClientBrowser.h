@@ -2,7 +2,7 @@
 #include "CefClientHandler.h"
 #include <string>
 
-class CefClientBrowser : public CWnd, public  CefClientHandler::Delegate
+class CefClientBrowser : public CWnd, public CefClientHandler::Delegate
 {
 public:
 	CefClientBrowser();
@@ -35,6 +35,7 @@ public:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnDestroy();
 	afx_msg void OnClose();
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 };
 
 //void OnBrowserCreated(CefRefPtr<CefBrowser> browser);

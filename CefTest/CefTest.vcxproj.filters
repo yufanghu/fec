@@ -144,6 +144,9 @@
     <ClInclude Include="CefClientBrowser.h">
       <Filter>myapi</Filter>
     </ClInclude>
+    <ClInclude Include="CefBaseWnd.h">
+      <Filter>myapi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CefTest.cpp">
@@ -252,6 +255,9 @@
       <Filter>myapi</Filter>
     </ClCompile>
     <ClCompile Include="CefClientBrowser.cpp">
+      <Filter>myapi</Filter>
+    </ClCompile>
+    <ClCompile Include="CefBaseWnd.cpp">
       <Filter>myapi</Filter>
     </ClCompile>
   </ItemGroup>

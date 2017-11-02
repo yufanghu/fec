@@ -7,7 +7,7 @@
 #include "CefTestDlg.h"
 #include "afxdialogex.h"
 #include "CefApi.h"
-
+#include "CefBaseWnd.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -63,6 +63,7 @@ BEGIN_MESSAGE_MAP(CCefTestDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDOK, &CCefTestDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -97,11 +98,11 @@ BOOL CCefTestDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
-	CefClientBrowser* p = new CefClientBrowser();
+	CefBaseWnd* p = new CefBaseWnd();
 	RECT rect;  GetClientRect(&rect);
 	p->CreateEx(WS_EX_CLIENTEDGE, NULL, NULL, WS_CHILD | WS_VISIBLE, rect, this, 1230);
 	p->ShowWindow(SW_SHOW);
-	p->Go("www.baidu.com");
+	//p->Go("www.baidu.com");
 	// TODO:  在此添加额外的初始化代码
 	/*CCefApi * pCef = (new CCefApi());
 	pCef->WebInit();
@@ -166,3 +167,14 @@ HCURSOR CCefTestDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CCefTestDlg::OnBnClickedOk()
+{
+	// TODO:  在此添加控件通知处理程序代码
+	CefBaseWnd* p = new CefBaseWnd(IDD_DIALOG1);
+
+	p->DoModal();
+	
+	//CDialogEx::OnOK();
+}
