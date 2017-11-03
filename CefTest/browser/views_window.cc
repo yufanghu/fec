@@ -181,7 +181,7 @@ void ViewsWindow::SetFavicon(CefRefPtr<CefImage> image) {
   CEF_REQUIRE_UI_THREAD();
 
   // Window icons should be 16 DIP in size.
-  DCHECK_EQ(std::max(image->GetWidth(), image->GetHeight()), 16U);
+  DCHECK_EQ(max(image->GetWidth(), image->GetHeight()), 16U);
 
   if (window_)
     window_->SetWindowIcon(image);

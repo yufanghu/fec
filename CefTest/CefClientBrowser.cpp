@@ -13,6 +13,7 @@
 #include "browser\browser_window_osr_win.h"
 #include "browser\client_handler_std.h"
 #include "browser\main_message_loop_multithreaded_win.h"
+#include "CefContext.h"
 
 CefClientBrowser::CefClientBrowser() : m_hWnd(NULL), m_clientHandler(NULL)
 {
@@ -134,10 +135,12 @@ void CefClientBrowser::WebInit()
 
 	wchar_t * path = new wchar_t[MAX_PATH];
 	memset(path, 0, MAX_PATH * sizeof(wchar_t));
-	//GetCefChildPath(&path);
-	//cef_string_from_wide(path, MAX_PATH, &m_cefSetting.browser_subprocess_path);
 
-	//::MessageBoxA(NULL, ("aaa"), NULL, MB_OK);
+	//вс╫ЬЁл
+	const std::string & agent_path = CefContext::GetInstance()->GetAgentPath();
+	cef_string_from_ascii(agent_path.c_str(), agent_path.length(), &m_cefSetting.browser_subprocess_path);
+
+	
 	CefRefPtr<CefCommandLine> command_line = CefCommandLine::CreateCommandLine();
 	command_line->InitFromString(::GetCommandLineW());
 

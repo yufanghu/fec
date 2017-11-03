@@ -184,7 +184,7 @@ LogMessage::LogMessage(const char* file,
 LogMessage::~LogMessage() {
   stream_ << std::endl;
   std::string str_newline(stream_.str());
-  cef_log(file_, line_, severity_, str_newline.c_str());
+  //cef_log(file_, line_, severity_, str_newline.c_str());
 }
 
 #if defined(OS_WIN)

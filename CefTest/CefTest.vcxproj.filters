@@ -150,6 +150,39 @@
     <ClInclude Include="MyDialog.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CefContext.h">
+      <Filter>myapi</Filter>
+    </ClInclude>
+    <ClInclude Include="CefBrowserEx.h">
+      <Filter>myapi</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\root_window_manager.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\root_window.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\root_window_win.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\temp_window_win.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\root_window_views.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\views_window.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\views_style.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\views_menu_bar.h">
+      <Filter>browser</Filter>
+    </ClInclude>
+    <ClInclude Include="browser\main_context_impl.h">
+      <Filter>browser</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CefTest.cpp">
@@ -265,6 +298,45 @@
     </ClCompile>
     <ClCompile Include="MyDialog.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CefContext.cpp">
+      <Filter>myapi</Filter>
+    </ClCompile>
+    <ClCompile Include="CefBrowserEx.cpp">
+      <Filter>myapi</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\root_window_manager.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\root_window.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\root_window_create.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\root_window_win.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\temp_window_win.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\root_window_views.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\views_window.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\views_style.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\views_menu_bar.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\main_context_impl.cc">
+      <Filter>browser</Filter>
+    </ClCompile>
+    <ClCompile Include="browser\main_context_impl_win.cc">
+      <Filter>browser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

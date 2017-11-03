@@ -6,7 +6,8 @@ class CefClientHandler :
 	public CefClient,
 	public CefDisplayHandler,
 	public CefLifeSpanHandler,
-	public CefLoadHandler{
+	public CefLoadHandler,
+	public CefKeyboardHandler{
 public:
 	// Implement this interface to receive notification of ClientHandler
 	// events. The methods of this class will be called on the main thread.
@@ -45,11 +46,21 @@ public:
 	~CefClientHandler();
 
 	void CreateBrowser(CefWindowInfo const & info, CefBrowserSettings const & settings, CefString const & url);
-
+	// Delegate to detach itself before destruction.
+	void DetachDelegate();
+	// CefClient methods
+	CefRefPtr<CefKeyboardHandler> GetKeyboardHandler() OVERRIDE{ return this; }
+private:
 	// CefClient methods:
 	virtual CefRefPtr<CefDisplayHandler> GetDisplayHandler() override { return this; }
 	virtual CefRefPtr<CefLifeSpanHandler> GetLifeSpanHandler() override { return this; }
 	virtual CefRefPtr<CefLoadHandler> GetLoadHandler() override { return this; }
+
+	// CefKeyboardHandler methods
+	bool OnPreKeyEvent(CefRefPtr<CefBrowser> browser,
+		const CefKeyEvent& event,
+		CefEventHandle os_event,
+		bool* is_keyboard_shortcut) OVERRIDE;
 
 	// CefDisplayHandler methods:
 	virtual void OnAddressChange(CefRefPtr<CefBrowser> browser, CefRefPtr<CefFrame> frame, const CefString& url) override;
@@ -87,8 +98,20 @@ public:
 		const CefString& failedUrl) override;
 
 	// This object may outlive the Delegate object so it's necessary for the
-	// Delegate to detach itself before destruction.
-	void DetachDelegate();
+	
+	// Create a new popup window using the specified information. |is_devtools|
+	// will be true if the window will be used for DevTools. Return true to
+	// proceed with popup browser creation or false to cancel the popup browser.
+	// May be called on any thead.
+	bool CreatePopupWindow(CefRefPtr<CefBrowser> browser,
+		bool is_devtools,
+		const CefPopupFeatures& popupFeatures,
+		CefWindowInfo& windowInfo,
+		CefRefPtr<CefClient>& client,
+		CefBrowserSettings& settings);
+	// Show a new DevTools popup window.
+	void ShowDevTools(CefRefPtr<CefBrowser> browser,
+		const CefPoint& inspect_element_at);
 
 private:
 

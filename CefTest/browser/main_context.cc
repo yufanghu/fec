@@ -16,6 +16,10 @@ MainContext* g_main_context = NULL;
 
 // static
 MainContext* MainContext::Get() {
+	if (NULL == g_main_context)
+	{
+		int i = 0;
+	}
   DCHECK(g_main_context);
   return g_main_context;
 }

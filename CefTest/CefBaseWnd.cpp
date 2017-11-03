@@ -5,12 +5,12 @@ IMPLEMENT_DYNAMIC(CefBaseWnd, CDialog)
 
 CefBaseWnd::CefBaseWnd() : m_pBrowser(NULL)
 {
-	m_pBrowser = new CefClientBrowser();
+	m_pBrowser = new CefBrowserEx();
 }
 
 CefBaseWnd::CefBaseWnd(UINT nID, CWnd* pParent /*= NULL*/) : CDialog(nID, pParent)
 {
-	m_pBrowser = new CefClientBrowser();
+	m_pBrowser = new CefBrowserEx();
 }
 
 
@@ -42,9 +42,12 @@ int CefBaseWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// TODO:  在此添加您专用的创建代码
 	//CefBaseWnd* p = new CefBaseWnd();
 	//RECT rect;  GetClientRect(&rect);
-	m_pBrowser->CreateEx(WS_EX_CLIENTEDGE, NULL, NULL, WS_CHILD | WS_VISIBLE, CRect(0, 0, 0, 0), this, 1230);
-	m_pBrowser->ShowWindow(SW_HIDE);
-	m_pBrowser->Go("www.baidu.com");
+	//m_pBrowser->CreateEx(WS_EX_CLIENTEDGE, NULL, NULL, WS_CHILD | WS_VISIBLE, CRect(0, 0, 0, 0), this, 1230);
+	//m_pBrowser->ShowWindow(SW_HIDE);
+	//m_pBrowser->Go("www.baidu.com");
+	m_pBrowser->WebInit();
+	m_pBrowser->SetMainHwnd(GetSafeHwnd());
+	m_pBrowser->CreateBrowser("http://www.gamersky.com");
 	return 0;
 }
 
@@ -72,6 +75,8 @@ void CefBaseWnd::OnSize(UINT nType, int cx, int cy)
 	GetClientRect(rect);
 
 	rect.DeflateRect(1, 1);
-	m_pBrowser->MoveWindow(rect);
+	//m_pBrowser->MoveWindow(rect);
+
+	m_pBrowser->AutoAdjustBrowser();
 	// TODO:  在此处添加消息处理程序代码
 }

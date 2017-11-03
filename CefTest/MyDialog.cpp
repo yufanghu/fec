@@ -74,7 +74,7 @@ void CMyDialog::DrawTitleBar(CDC *pDC)
 		//取得标题栏的位置
 		rtTitle.left = GetSystemMetrics(SM_CXFRAME);
 		rtTitle.top = GetSystemMetrics(SM_CYFRAME);
-		rtTitle.right = rtWnd.right - rtWnd.left - GetSystemMetrics(SM_CXFRAME);
+		rtTitle.right = rtWnd.right - GetSystemMetrics(SM_CXFRAME);
 		rtTitle.bottom = rtTitle.top + GetSystemMetrics(SM_CYSIZE);
 
 		// 避免与原有标题栏重叠

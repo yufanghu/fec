@@ -8,9 +8,9 @@ public:
 	CefClientBrowser();
 	virtual ~CefClientBrowser();
 	void SetMainHwnd(HWND hWnd);
-public:
 	void WebInit();
 	void Go(const std::string & url);
+	
 protected:
 	void OnBrowserCreated(CefRefPtr<CefBrowser> browser);
 	//

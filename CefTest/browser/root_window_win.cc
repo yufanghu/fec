@@ -867,12 +867,12 @@ void RootWindowWin::OnSetFullscreen(bool fullscreen) {
 
   CefRefPtr<CefBrowser> browser = GetBrowser();
   if (browser) {
-    scoped_ptr<window_test::WindowTestRunnerWin> test_runner(
-        new window_test::WindowTestRunnerWin());
-    if (fullscreen)
-      test_runner->Maximize(browser);
-    else
-      test_runner->Restore(browser);
+	  /*scoped_ptr<window_test::WindowTestRunnerWin> test_runner(
+		  new window_test::WindowTestRunnerWin());
+		  if (fullscreen)
+		  test_runner->Maximize(browser);
+		  else
+		  test_runner->Restore(browser);*/
   }
 }
 

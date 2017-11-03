@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "CefClientHandler.h"
 #include "include/wrapper/cef_helpers.h"
+#include "browser/main_context.h"
+#include "browser/root_window_manager.h"
 
 CefClientHandler::CefClientHandler(Delegate* delegate)
 	: m_delegate(delegate)
@@ -111,4 +113,79 @@ bool CefClientHandler::OnBeforePopup(CefRefPtr<CefBrowser> browser, CefRefPtr<Ce
 	CEF_REQUIRE_UI_THREAD();
 	//ShowDevTools(browser, CefPoint(params->GetXCoord(), params->GetYCoord()));
 	return TRUE;
+}
+
+bool CefClientHandler::OnPreKeyEvent(CefRefPtr<CefBrowser> browser, const CefKeyEvent& event, CefEventHandle os_event, bool* is_keyboard_shortcut)
+{
+	CEF_REQUIRE_UI_THREAD();
+
+	if (!event.focus_on_editable_field && event.windows_key_code == 0x20) {
+		// Special handling for the space character when an input element does not
+		// have focus. Handling the event in OnPreKeyEvent() keeps the event from
+		// being processed in the renderer. If we instead handled the event in the
+		// OnKeyEvent() method the space key would cause the window to scroll in
+		// addition to showing the alert box.
+		if (event.type == KEYEVENT_RAWKEYDOWN)
+			//test_runner::Alert(browser, "You pressed the space bar!");
+			return true;
+	}
+
+	if (!event.focus_on_editable_field)
+	{
+		switch (event.windows_key_code)
+		{
+		case VK_F5:
+			//browser->Reload();
+			ShowDevTools(browser, CefPoint());
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	return false;
+}
+
+bool CefClientHandler::CreatePopupWindow(CefRefPtr<CefBrowser> browser, bool is_devtools, const CefPopupFeatures& popupFeatures, CefWindowInfo& windowInfo, CefRefPtr<CefClient>& client, CefBrowserSettings& settings)
+{
+	CEF_REQUIRE_UI_THREAD();
+
+	// The popup browser will be parented to a new native window.
+	// Don't show URL bar and navigation buttons on DevTools windows.
+	//client::MainContext::Get()->GetRootWindowManager();
+	client::MainContext::Get()->GetRootWindowManager()->CreateRootWindowAsPopup(!is_devtools, false, popupFeatures, windowInfo, client, settings);
+
+	return true;
+}
+
+void CefClientHandler::ShowDevTools(CefRefPtr<CefBrowser> browser,
+	const CefPoint& inspect_element_at) {
+	if (!CefCurrentlyOn(TID_UI)) {
+		// Execute this method on the UI thread.
+		/*CefPostTask(TID_UI, base::Bind(&CefClientHandler::ShowDevTools, this, browser,
+			inspect_element_at));*/
+		return;
+	}
+
+	CefWindowInfo windowInfo;
+	CefRefPtr<CefClient> client;
+	CefBrowserSettings settings;
+
+	CefRefPtr<CefBrowserHost> host = browser->GetHost();
+
+	// Test if the DevTools browser already exists.
+	bool has_devtools = host->HasDevTools();
+	if (!has_devtools) {
+		// Create a new RootWindow for the DevTools browser that will be created
+		// by ShowDevTools().
+		has_devtools = CreatePopupWindow(browser, true, CefPopupFeatures(),
+			windowInfo, client, settings);
+	}
+
+	if (has_devtools) {
+		// Create the DevTools browser if it doesn't already exist.
+		// Otherwise, focus the existing DevTools browser and inspect the element
+		// at |inspect_element_at| if non-empty.
+		host->ShowDevTools(windowInfo, client, settings, inspect_element_at);
+	}
 }
