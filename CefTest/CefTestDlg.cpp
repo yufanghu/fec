@@ -6,7 +6,6 @@
 #include "CefTest.h"
 #include "CefTestDlg.h"
 #include "afxdialogex.h"
-#include "CefApi.h"
 #include "CefBaseWnd.h"
 #include "MyDialog.h"
 #ifdef _DEBUG
@@ -35,7 +34,7 @@ protected:
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
 {
 }
-extern CCefApi * pCef;
+
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
@@ -69,7 +68,6 @@ END_MESSAGE_MAP()
 
 
 // CCefTestDlg 消息处理程序
-#include "CefClientBrowser.h"
 BOOL CCefTestDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -99,23 +97,7 @@ BOOL CCefTestDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
-	CefBaseWnd* p = new CefBaseWnd();
-	RECT rect;  GetClientRect(&rect);
-	p->CreateEx(WS_EX_CLIENTEDGE, NULL, NULL, WS_CHILD | WS_VISIBLE, rect, this, 1230);
-	p->ShowWindow(SW_SHOW);
-	//p->Go("www.baidu.com");
-	// TODO:  在此添加额外的初始化代码
-	/*CCefApi * pCef = (new CCefApi());
-	pCef->WebInit();
-	pCef->SetHwnd(GetSafeHwnd());
-	pCef->Run();*/
 
-	
-	return TRUE;
-	
-
-	/*m_clientHandler = new guo::ClientHandler(this);
-	m_clientHandler->CreateBrowser(info, browserSettings, CefString("www.baidu.com"));*/
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 

@@ -99,16 +99,6 @@ private:
 
 	// This object may outlive the Delegate object so it's necessary for the
 	
-	// Create a new popup window using the specified information. |is_devtools|
-	// will be true if the window will be used for DevTools. Return true to
-	// proceed with popup browser creation or false to cancel the popup browser.
-	// May be called on any thead.
-	bool CreatePopupWindow(CefRefPtr<CefBrowser> browser,
-		bool is_devtools,
-		const CefPopupFeatures& popupFeatures,
-		CefWindowInfo& windowInfo,
-		CefRefPtr<CefClient>& client,
-		CefBrowserSettings& settings);
 	// Show a new DevTools popup window.
 	void ShowDevTools(CefRefPtr<CefBrowser> browser,
 		const CefPoint& inspect_element_at);

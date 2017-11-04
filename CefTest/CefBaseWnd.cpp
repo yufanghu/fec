@@ -5,12 +5,12 @@ IMPLEMENT_DYNAMIC(CefBaseWnd, CDialog)
 
 CefBaseWnd::CefBaseWnd() : m_pBrowser(NULL)
 {
-	m_pBrowser = new CefBrowserEx();
+	m_pBrowser = new CefClientBrowser();
 }
 
 CefBaseWnd::CefBaseWnd(UINT nID, CWnd* pParent /*= NULL*/) : CDialog(nID, pParent)
 {
-	m_pBrowser = new CefBrowserEx();
+	m_pBrowser = new CefClientBrowser();
 }
 
 
@@ -77,6 +77,6 @@ void CefBaseWnd::OnSize(UINT nType, int cx, int cy)
 	rect.DeflateRect(1, 1);
 	//m_pBrowser->MoveWindow(rect);
 
-	m_pBrowser->AutoAdjustBrowser();
+	m_pBrowser->AdjustBrowserSize();
 	// TODO:  在此处添加消息处理程序代码
 }

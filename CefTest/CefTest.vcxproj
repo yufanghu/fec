@@ -126,9 +126,7 @@
     <ClInclude Include="browser\views_menu_bar.h" />
     <ClInclude Include="browser\views_style.h" />
     <ClInclude Include="browser\views_window.h" />
-    <ClInclude Include="CefApi.h" />
     <ClInclude Include="CefBaseWnd.h" />
-    <ClInclude Include="CefBrowserEx.h" />
     <ClInclude Include="CefClientBrowser.h" />
     <ClInclude Include="CefContext.h" />
     <ClInclude Include="CefTest.h" />
@@ -177,9 +175,7 @@
     <ClCompile Include="browser\views_menu_bar.cc" />
     <ClCompile Include="browser\views_style.cc" />
     <ClCompile Include="browser\views_window.cc" />
-    <ClCompile Include="CefApi.cpp" />
     <ClCompile Include="CefBaseWnd.cpp" />
-    <ClCompile Include="CefBrowserEx.cpp" />
     <ClCompile Include="CefClientBrowser.cpp" />
     <ClCompile Include="CefContext.cpp" />
     <ClCompile Include="CefTest.cpp" />

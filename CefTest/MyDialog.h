@@ -1,5 +1,5 @@
 #pragma once
-#include "cefclientbrowser.h"
+
 
 // CMyDialog ¶Ô»°¿ò
 
@@ -35,7 +35,6 @@ public:
 	afx_msg void OnNcMouseMove(UINT nHitTest, CPoint point);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 
-	CefClientBrowser * m_pBrowser;
 
 
 };

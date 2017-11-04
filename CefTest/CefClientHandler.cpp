@@ -146,17 +146,6 @@ bool CefClientHandler::OnPreKeyEvent(CefRefPtr<CefBrowser> browser, const CefKey
 	return false;
 }
 
-bool CefClientHandler::CreatePopupWindow(CefRefPtr<CefBrowser> browser, bool is_devtools, const CefPopupFeatures& popupFeatures, CefWindowInfo& windowInfo, CefRefPtr<CefClient>& client, CefBrowserSettings& settings)
-{
-	CEF_REQUIRE_UI_THREAD();
-
-	// The popup browser will be parented to a new native window.
-	// Don't show URL bar and navigation buttons on DevTools windows.
-	//client::MainContext::Get()->GetRootWindowManager();
-	client::MainContext::Get()->GetRootWindowManager()->CreateRootWindowAsPopup(!is_devtools, false, popupFeatures, windowInfo, client, settings);
-
-	return true;
-}
 
 void CefClientHandler::ShowDevTools(CefRefPtr<CefBrowser> browser,
 	const CefPoint& inspect_element_at) {
@@ -168,24 +157,12 @@ void CefClientHandler::ShowDevTools(CefRefPtr<CefBrowser> browser,
 	}
 
 	CefWindowInfo windowInfo;
-	CefRefPtr<CefClient> client;
 	CefBrowserSettings settings;
 
-	CefRefPtr<CefBrowserHost> host = browser->GetHost();
+#if defined(OS_WIN)
+	windowInfo.SetAsPopup(browser->GetHost()->GetWindowHandle(), "DevTools");
+#endif
 
-	// Test if the DevTools browser already exists.
-	bool has_devtools = host->HasDevTools();
-	if (!has_devtools) {
-		// Create a new RootWindow for the DevTools browser that will be created
-		// by ShowDevTools().
-		has_devtools = CreatePopupWindow(browser, true, CefPopupFeatures(),
-			windowInfo, client, settings);
-	}
-
-	if (has_devtools) {
-		// Create the DevTools browser if it doesn't already exist.
-		// Otherwise, focus the existing DevTools browser and inspect the element
-		// at |inspect_element_at| if non-empty.
-		host->ShowDevTools(windowInfo, client, settings, inspect_element_at);
-	}
+	browser->GetHost()->ShowDevTools(windowInfo, this, settings,
+		inspect_element_at);
 }

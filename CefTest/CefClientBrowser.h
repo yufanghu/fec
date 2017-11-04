@@ -2,15 +2,19 @@
 #include "CefClientHandler.h"
 #include <string>
 
-class CefClientBrowser : public CWnd, public CefClientHandler::Delegate
+class CefClientBrowser : public CefClientHandler::Delegate
 {
 public:
 	CefClientBrowser();
 	virtual ~CefClientBrowser();
-	void SetMainHwnd(HWND hWnd);
-	void WebInit();
-	void Go(const std::string & url);
 	
+	void WebInit();
+	void SetMainHwnd(HWND hWnd){ m_hWnd = hWnd; }
+	void CreateBrowser(const std::string & url = "");
+	void AdjustBrowserSize();
+	void SetUserAgent(const std::string & uaTag){ m_strUserAgent += uaTag; }
+	void SetCookies(const std::string & name, const std::string & domain, 
+		const std::string & value, const std::string & path = "/");
 protected:
 	void OnBrowserCreated(CefRefPtr<CefBrowser> browser);
 	//
@@ -29,11 +33,9 @@ protected:
 private:
 	CefRefPtr<CefBrowser> m_browser;
 	CefClientHandler* m_clientHandler;
+	CefSettings m_cefSetting;
 	HWND m_hWnd;
-public:
-	DECLARE_MESSAGE_MAP()
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnDestroy();
-	afx_msg void OnClose();
-	afx_msg void OnSize(UINT nType, int cx, int cy);
+	std::string m_strUserAgent;
+	std::string m_url;
 };
+

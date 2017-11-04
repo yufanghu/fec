@@ -14,7 +14,7 @@ IMPLEMENT_DYNAMIC(CMyDialog, CDialog)
 CMyDialog::CMyDialog(CWnd* pParent /*=NULL*/)
 	: CDialog(CMyDialog::IDD, pParent)
 {
-	m_pBrowser = new CefClientBrowser();
+	
 }
 
 CMyDialog::~CMyDialog()
@@ -282,7 +282,7 @@ void CMyDialog::OnSize(UINT nType, int cx, int cy)
 	GetClientRect(rect);
 
 	rect.DeflateRect(1, 1);
-	m_pBrowser->MoveWindow(rect);
+	
 	// TODO:  在此处添加消息处理程序代码
 }
 
@@ -378,8 +378,5 @@ int CMyDialog::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	// TODO:  在此添加您专用的创建代码
 	
-	m_pBrowser->CreateEx(WS_EX_CLIENTEDGE, NULL, NULL, WS_CHILD | WS_VISIBLE, CRect(0, 0, 0, 0), this, 1230);
-	m_pBrowser->ShowWindow(SW_HIDE);
-	m_pBrowser->Go("www.baidu.com");
 	return 0;
 }

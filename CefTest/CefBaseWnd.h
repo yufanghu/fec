@@ -1,6 +1,6 @@
 #pragma once
+
 #include "CefClientBrowser.h"
-#include "CefBrowserEx.h"
 
 class CefBaseWnd : public CDialog
 {
@@ -17,6 +17,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 private:
-	CefBrowserEx * m_pBrowser;
+	CefClientBrowser * m_pBrowser;
 };
 

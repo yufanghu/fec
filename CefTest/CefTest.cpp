@@ -37,7 +37,6 @@ CCefTestApp::CCefTestApp()
 
 CCefTestApp theApp;
 
-#include "CefApi.h"
 // CCefTestApp ≥ı ºªØ
 
 
