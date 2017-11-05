@@ -1,6 +1,7 @@
 #pragma once
 #include "CefClientHandler.h"
 #include <string>
+#include "shared\browser\client_app_browser.h"
 
 class CefClientBrowser : public CefClientHandler::Delegate
 {
@@ -12,7 +13,7 @@ public:
 	void SetMainHwnd(HWND hWnd){ m_hWnd = hWnd; }
 	void CreateBrowser(const std::string & url = "");
 	void AdjustBrowserSize();
-	void SetUserAgent(const std::string & uaTag){ m_strUserAgent += uaTag; }
+	void SetUserAgent(const std::string & uaTag){ m_strUserAgent /*+*/= uaTag; }
 	void SetCookies(const std::string & name, const std::string & domain, 
 		const std::string & value, const std::string & path = "/");
 protected:

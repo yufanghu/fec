@@ -45,9 +45,10 @@ int CefBaseWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	//m_pBrowser->CreateEx(WS_EX_CLIENTEDGE, NULL, NULL, WS_CHILD | WS_VISIBLE, CRect(0, 0, 0, 0), this, 1230);
 	//m_pBrowser->ShowWindow(SW_HIDE);
 	//m_pBrowser->Go("www.baidu.com");
+	//m_pBrowser->SetUserAgent("Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
 	m_pBrowser->WebInit();
 	m_pBrowser->SetMainHwnd(GetSafeHwnd());
-	m_pBrowser->CreateBrowser("http://www.gamersky.com");
+	m_pBrowser->CreateBrowser("http://www.baidu.com");
 	return 0;
 }
 

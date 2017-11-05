@@ -2,6 +2,11 @@
 #include <string>
 
 #define CEFCONTEXT CefContext::GetInstance() 
+namespace {
+	enum eProxyType{
+		eSock5, eSock4, eHttp
+	};
+}
 class CefContext
 {
 public:
@@ -15,6 +20,7 @@ public:
 	const  std::string & GetMainUrl() const;
 	void SetAgentPath(const std::string & url){ cache_path = url; }
 	void SetMainUrl(const std::string & url){ main_url = url; }
+	//void SetProxyInfo(const std::string & host, short port, )
 private:
 	CefContext();
 	~CefContext();

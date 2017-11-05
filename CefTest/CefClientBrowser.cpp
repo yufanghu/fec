@@ -74,7 +74,11 @@ void CefClientBrowser::WebInit()
 
 	CefRefPtr<CefCommandLine> command_line = CefCommandLine::CreateCommandLine();
 	command_line->InitFromString(::GetCommandLineW());
-
+	//command_line->AppendSwitchWithValue("proxy-server", ("socksww5://192.168.1.1:9090"));
+	command_line->AppendSwitchWithValue("ppapi-flash-path", "pepflashplayer.dll");
+	//command_line->AppendArgument()
+	//command_line->AppendSwitch("no-referrers");
+	//command_line->AppendSwitch("no-proxy-server");
 	// Create a ClientApp of the correct type.
 	CefRefPtr<CefApp> app;
 	client::ClientApp::ProcessType process_type = client::ClientApp::GetProcessType(command_line);
@@ -84,7 +88,8 @@ void CefClientBrowser::WebInit()
 		app = new client::ClientAppRenderer();
 	else if (process_type == client::ClientApp::OtherProcess)
 		app = new client::ClientAppOther();
-
+	//CefRefPtr<CefCommandLine> command_line_global = CefCommandLine::GetGlobalCommandLine();
+	//command_line->AppendSwitchWithValue("proxy-server", ("socksww5://192.168.1.1:9090"));
 	CefMainArgs main_args(hInstance);
 	CefInitialize(main_args, m_cefSetting, app, sandbox_info);
 
@@ -100,6 +105,7 @@ void CefClientBrowser::CreateBrowser(const std::string & url /*= ""*/)
 	//window_info.SetAsPopup(m_hWnd, "aaa");
 	//window_info.SetAsWindowless(m_hWnd, false);
 	CefBrowserSettings browser_settings;
+	
 	m_clientHandler = new CefClientHandler(this);
 	if (url.empty())
 		CefBrowserHost::CreateBrowser(window_info, m_clientHandler, CefContext::GetInstance()->GetMainUrl(), browser_settings, NULL);

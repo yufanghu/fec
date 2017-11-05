@@ -7,7 +7,8 @@ class CefClientHandler :
 	public CefDisplayHandler,
 	public CefLifeSpanHandler,
 	public CefLoadHandler,
-	public CefKeyboardHandler{
+	public CefKeyboardHandler,
+	public CefRequestHandler{
 public:
 	// Implement this interface to receive notification of ClientHandler
 	// events. The methods of this class will be called on the main thread.
@@ -67,7 +68,6 @@ private:
 	virtual void OnTitleChange(CefRefPtr<CefBrowser> browser, const CefString& title) override;
 	virtual void OnFullscreenModeChange(CefRefPtr<CefBrowser> browser, bool fullscreen) override;
 
-	// CefLifeSpanHandler methods:
 	// CefLifeSpanHandler methods
 	bool OnBeforePopup(
 		CefRefPtr<CefBrowser> browser,
@@ -103,6 +103,26 @@ private:
 	void ShowDevTools(CefRefPtr<CefBrowser> browser,
 		const CefPoint& inspect_element_at);
 
+	// CefRequestHandler methods
+	bool OnSelectClientCertificate(
+		CefRefPtr<CefBrowser> browser,
+		bool isProxy,
+		const CefString& host,
+		int port,
+		const X509CertificateList& certificates,
+		CefRefPtr<CefSelectClientCertificateCallback> callback) OVERRIDE;
+
+	virtual bool GetAuthCredentials(CefRefPtr<CefBrowser> browser,
+		CefRefPtr<CefFrame> frame,
+		bool isProxy,
+		const CefString& host,
+		int port,
+		const CefString& realm,
+		const CefString& scheme,
+		CefRefPtr<CefAuthCallback> callback) override{
+		return false;
+	}
+	
 private:
 
 	// Include the default reference counting implementation.

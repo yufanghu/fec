@@ -135,7 +135,9 @@ bool CefClientHandler::OnPreKeyEvent(CefRefPtr<CefBrowser> browser, const CefKey
 		switch (event.windows_key_code)
 		{
 		case VK_F5:
-			//browser->Reload();
+			browser->Reload();
+			return true;
+		case VK_F10:
 			ShowDevTools(browser, CefPoint());
 			return true;
 		default:
@@ -165,4 +167,41 @@ void CefClientHandler::ShowDevTools(CefRefPtr<CefBrowser> browser,
 
 	browser->GetHost()->ShowDevTools(windowInfo, this, settings,
 		inspect_element_at);
+}
+
+#include "shared/common/client_switches.h"
+bool CefClientHandler::OnSelectClientCertificate(
+	CefRefPtr<CefBrowser> browser,
+	bool isProxy,
+	const CefString& host,
+	int port,
+	const X509CertificateList& certificates,
+	CefRefPtr<CefSelectClientCertificateCallback> callback) {
+	CEF_REQUIRE_UI_THREAD();
+
+	CefRefPtr<CefCommandLine> command_line =
+		CefCommandLine::GetGlobalCommandLine();
+	if (!command_line->HasSwitch(client::switches::kSslClientCertificate)) {
+		return false;
+	}
+
+	const std::string& cert_name =
+		command_line->GetSwitchValue(client::switches::kSslClientCertificate);
+
+	if (cert_name.empty()) {
+		callback->Select(NULL);
+		return true;
+	}
+
+	std::vector<CefRefPtr<CefX509Certificate>>::const_iterator it =
+		certificates.begin();
+	for (; it != certificates.end(); ++it) {
+		CefString subject((*it)->GetSubject()->GetDisplayName());
+		if (subject == cert_name) {
+			callback->Select(*it);
+			return true;
+		}
+	}
+
+	return true;
 }
