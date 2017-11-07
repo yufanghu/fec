@@ -37,3 +37,33 @@ const std::string & CefContext::GetMainUrl() const
 {
 	return main_url;
 }
+
+void CefContext::SetProxyInfo(const std::string & host, short port, eProxyType proxy_type /*= eHttp*/)
+{
+	//std::string 
+	proxy_url = "";
+	if (eHttp == proxy_type){
+		proxy_url += "http://";
+	}
+	else if (eSock5 == proxy_type){
+		proxy_url += "socks5://";
+	}
+	else if (eSock4 == proxy_type){
+		proxy_url += "socks4://";
+	}
+
+	proxy_url += host;
+	char buf[10] = { 0 };
+	_itoa_s(port, buf, 10);
+	proxy_url += ":";
+	proxy_url += buf;
+}
+
+bool CefContext::GetProxyInfo(std::string & proxyUrl)
+{
+	if (!proxy_url.empty()){
+		proxyUrl = proxy_url;
+		return true;
+	}
+	return false;
+}

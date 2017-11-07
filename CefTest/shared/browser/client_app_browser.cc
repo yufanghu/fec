@@ -8,6 +8,7 @@
 #include "include/cef_cookie.h"
 #include "shared/browser/main_message_loop_external_pump.h"
 #include "shared/common/client_switches.h"
+#include "CefContext.h"
 
 namespace client {
 
@@ -47,7 +48,15 @@ void ClientAppBrowser::OnBeforeCommandLineProcessing(
       // MaterialDesignController::IsModeMaterial() in Chromium code.
       command_line->AppendSwitchWithValue("top-chrome-md", "non-material");
     }
-	command_line->AppendSwitchWithValue("proxy-server", ("http://192.168.1.23:8888"));
+	command_line->AppendSwitch("ignore-certificate-errors");
+	command_line->AppendSwitch("ppapi-out-of-process");
+	command_line->AppendSwitchWithValue("ppapi-flash-version", "26.0.0.126");
+	command_line->AppendSwitchWithValue("ppapi-flash-path", "Plugins\\pepflashplayer.dll");
+
+	std::string proxy;
+	if (CefContext::GetInstance()->GetProxyInfo(proxy))
+		command_line->AppendSwitchWithValue("proxy-server", proxy);
+	//command_line->AppendSwitchWithValue("proxy-server", ("socks://192.168.94.197:1080"));
     DelegateSet::iterator it = delegates_.begin();
     for (; it != delegates_.end(); ++it)
       (*it)->OnBeforeCommandLineProcessing(this, command_line);

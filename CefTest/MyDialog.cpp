@@ -132,7 +132,7 @@ void CMyDialog::DrawTitleBar(CDC *pDC)
 
 		//准备画XP风格按钮
 		CBitmap* pBitmap = new CBitmap;
-		CBitmap* pOldBitmap;
+		//CBitmap* pOldBitmap;
 		CDC* pDisplayMemDC = new CDC;
 		pDisplayMemDC->CreateCompatibleDC(pDC);
 
@@ -297,7 +297,7 @@ void CMyDialog::OnNcMouseMove(UINT nHitTest, CPoint point)
 	CDC* pDisplayMemDC = new CDC;
 	pDisplayMemDC->CreateCompatibleDC(pDC);
 	CBitmap* pBitmap = new CBitmap;
-	CBitmap* pOldBitmap;
+	//CBitmap* pOldBitmap;
 	CRect rtWnd, rtButton;
 
 	if (pDC)

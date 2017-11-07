@@ -75,7 +75,7 @@ void CefClientBrowser::WebInit()
 	CefRefPtr<CefCommandLine> command_line = CefCommandLine::CreateCommandLine();
 	command_line->InitFromString(::GetCommandLineW());
 	//command_line->AppendSwitchWithValue("proxy-server", ("socksww5://192.168.1.1:9090"));
-	command_line->AppendSwitchWithValue("ppapi-flash-path", "pepflashplayer.dll");
+	//command_line->AppendSwitchWithValue("ppapi-flash-path", "pepflashplayer.dll");
 	//command_line->AppendArgument()
 	//command_line->AppendSwitch("no-referrers");
 	//command_line->AppendSwitch("no-proxy-server");

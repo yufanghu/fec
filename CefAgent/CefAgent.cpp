@@ -13,7 +13,7 @@
 #pragma comment(lib, "Shell32.lib")	
 //cef lib
 #pragma comment(lib, "libcef.lib")
-#pragma comment(lib, "cef_sandbox.lib")
+//#pragma comment(lib, "cef_sandbox.lib")
 #pragma comment(lib, "libcef_dll_wrapper.lib")
 
 //#include "cef_sandbox_win.h"
