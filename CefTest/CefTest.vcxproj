@@ -107,6 +107,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BrowserWnd.h" />
     <ClInclude Include="browser\browser_window.h" />
     <ClInclude Include="browser\browser_window_osr_win.h" />
     <ClInclude Include="browser\browser_window_std_win.h" />
@@ -131,6 +132,7 @@
     <ClInclude Include="CefBaseWnd.h" />
     <ClInclude Include="CefClientBrowser.h" />
     <ClInclude Include="CefContext.h" />
+    <ClInclude Include="CefInit.h" />
     <ClInclude Include="CefTest.h" />
     <ClInclude Include="CefTestDlg.h" />
     <ClInclude Include="CefClientHandler.h" />
@@ -152,6 +154,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BrowserWnd.cpp" />
     <ClCompile Include="browser\browser_window.cc" />
     <ClCompile Include="browser\browser_window_osr_win.cc" />
     <ClCompile Include="browser\browser_window_std_win.cc" />
@@ -180,6 +183,7 @@
     <ClCompile Include="CefBaseWnd.cpp" />
     <ClCompile Include="CefClientBrowser.cpp" />
     <ClCompile Include="CefContext.cpp" />
+    <ClCompile Include="CefInit.cpp" />
     <ClCompile Include="CefTest.cpp" />
     <ClCompile Include="CefTestDlg.cpp" />
     <ClCompile Include="common\client_app_delegates_common.cc" />

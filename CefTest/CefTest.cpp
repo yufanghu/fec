@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "CefTest.h"
 #include "CefTestDlg.h"
+#include "CefInit.h"
 
 #pragma comment(lib, "cef_sandbox")
 #pragma comment(lib, "libcef")
@@ -72,7 +73,7 @@ BOOL CCefTestApp::InitInstance()
 	// TODO:  应适当修改该字符串，
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
-
+	CefInit::GetInstance()->WebInit();
 	CCefTestDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();

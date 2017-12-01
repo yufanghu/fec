@@ -3,10 +3,10 @@
 
 IMPLEMENT_DYNAMIC(CefBaseWnd, CDialog)
 
-CefBaseWnd::CefBaseWnd() : m_pBrowser(NULL)
-{
-	m_pBrowser = new CefClientBrowser();
-}
+//CefBaseWnd::CefBaseWnd() : m_pBrowser(NULL)
+//{
+//	m_pBrowser = new CefClientBrowser();
+//}
 
 CefBaseWnd::CefBaseWnd(UINT nID, CWnd* pParent /*= NULL*/) : CDialog(nID, pParent)
 {
@@ -46,9 +46,9 @@ int CefBaseWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	//m_pBrowser->ShowWindow(SW_HIDE);
 	//m_pBrowser->Go("www.baidu.com");
 	//m_pBrowser->SetUserAgent("Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
-	m_pBrowser->WebInit();
+	//m_pBrowser->WebInit();
 	m_pBrowser->SetMainHwnd(GetSafeHwnd());
-	m_pBrowser->CreateBrowser("http://video.tudou.com/v/XMzA4MzM1OTkwMA==.html?spm=a2h28.8313475.c1.dimg11");
+	m_pBrowser->CreateBrowser("http://www.baidu.com");
 	return 0;
 }
 

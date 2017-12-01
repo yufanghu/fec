@@ -3,7 +3,8 @@
 
 #define MAIN_URL "http://www.baidu.com"
 
-CefContext::CefContext() : main_url(MAIN_URL)
+CefContext::CefContext() : main_url(MAIN_URL), 
+user_agent_("Mozilla/5.0 (Windows NT 6.1;WOW64)AppleWebKit/537.22(KHTML,like Gecko) Chrome/25.0.1364.152 Safari/537.22")
 {
 	GetModulePath();
 }
@@ -66,4 +67,9 @@ bool CefContext::GetProxyInfo(std::string & proxyUrl)
 		return true;
 	}
 	return false;
+}
+
+const std::string & CefContext::GetUserAgent() const
+{
+	return user_agent_;
 }

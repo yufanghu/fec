@@ -7,8 +7,9 @@ class CefBaseWnd : public CDialog
 	DECLARE_DYNAMIC(CefBaseWnd)
 public:
 	CefBaseWnd(UINT nID, CWnd* pParent = NULL);
-	CefBaseWnd();
+	//CefBaseWnd();
 	virtual ~CefBaseWnd();
+	//enum { IDD = IDD_DIALOG1 };
 protected:
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnClose();
